@@ -108,7 +108,7 @@ if (!is_file("{$GLOBALS['dir']}/$filename")) {
     goto redownload;
 }
 
-exec("s3cmd put {$GLOBALS['dir']}/$filename s3://kochava/almighty_ios/$filename");
+exec("s3cmd put {$GLOBALS['dir']}/$filename s3://alegrium-kochava/almighty_ios/$filename");
 
 $table_name = "kochava_event_almighty_ios";
 
@@ -118,7 +118,7 @@ $output = array();
 exec($pcmd, $output);
 echo implode("\n", $output) . "\n\n";
 
-$pcmd = "psql --host=$rhost --port=$rport --username=$ruser --no-password --echo-all $rdatabase  -c \"COPY {$table_name} FROM 's3://kochava/almighty_ios/{$filename}' CREDENTIALS 'aws_access_key_id={$aws_access_key_id};aws_secret_access_key={$aws_secret_access_key}' DELIMITER ',' IGNOREHEADER 1 REMOVEQUOTES;\"";
+$pcmd = "psql --host=$rhost --port=$rport --username=$ruser --no-password --echo-all $rdatabase  -c \"COPY {$table_name} FROM 's3://alegrium-kochava/almighty_ios/{$filename}' CREDENTIALS 'aws_access_key_id={$aws_access_key_id};aws_secret_access_key={$aws_secret_access_key}' DELIMITER ',' IGNOREHEADER 1 REMOVEQUOTES;\"";
 //echo $pcmd;
 $output = array();
 exec($pcmd, $output);
