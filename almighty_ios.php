@@ -112,7 +112,7 @@ exec("s3cmd put {$GLOBALS['dir']}/$filename s3://alegrium-kochava/almighty_ios/$
 
 $table_name = "kochava_event_almighty_ios";
 
-$pcmd = "psql --host=$rhost --port=$rport --username=$ruser --no-password --echo-all $rdatabase  -c \"DELETE FROM {$table_name} WHERE timestamp_utc between '$time_start' and '$time_end';\"";
+$pcmd = "psql --host=$rhost --port=$rport --username=$ruser --no-password --echo-all $rdatabase  -c \"DELETE FROM {$table_name} WHERE event_time_registered between '$time_start' and '$time_end';\"";
 //echo $pcmd;
 $output = array();
 exec($pcmd, $output);
